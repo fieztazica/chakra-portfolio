@@ -8,8 +8,6 @@ export default function Home() {
     <PageLayout title={"Home"}>
       <Container minW="100%" maxW="2xl" centerContent>
         <Hero />
-        <Hero />
-        <Hero />
       </Container>
     </PageLayout>
   );
