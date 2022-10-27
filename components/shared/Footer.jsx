@@ -2,12 +2,14 @@ import {
   Box,
   chakra,
   Container,
+  Link,
   Stack,
   Text,
   useColorModeValue,
   VisuallyHidden,
 } from "@chakra-ui/react";
 import React from "react";
+import NextLink from "next/link";
 import {
   FaFacebook,
   FaGithub,
@@ -26,6 +28,7 @@ const SocialButton = ({ children, label, href }) => {
       cursor={"pointer"}
       as={"a"}
       href={href}
+      target="_blank"
       display={"inline-flex"}
       alignItems={"center"}
       justifyContent={"center"}
@@ -73,7 +76,13 @@ export default function Footer() {
         justify={{ base: "center", md: "space-between" }}
         align={{ base: "center", md: "center" }}
       >
-        <Text>© 2022 Fiezt. All rights reserved</Text>
+        <Text>
+          © 2022{" "}
+          <Link as={Link} href="/">
+            Fiezt
+          </Link>
+          . All rights reserved
+        </Text>
         <Stack direction={"row"} spacing={6}>
           {socials.map((social) => {
             return (

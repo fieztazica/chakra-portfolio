@@ -4,6 +4,7 @@ import {
   Flex,
   Avatar,
   HStack,
+  Icon,
   Link,
   IconButton,
   Button,
@@ -15,14 +16,33 @@ import {
   useDisclosure,
   useColorModeValue,
   Stack,
+  Spacer,
+  Image,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
-import ColorModeButton from "../ColorModeButton";
+import ColorModeButton from "./ColorModeButton";
+import NextLink from "next/link";
+import { BsPerson } from "react-icons/bs";
+import { MdGroups } from "react-icons/md";
+import { FaHome } from "react-icons/fa";
+import { ReactComponent as fieztLogo } from "../../public/fiezt.svg";
 
-const Links = ["About", "Projects", "Team"];
+const Links = [
+  {
+    label: "About",
+    href: "/about",
+    icon: <BsPerson />,
+  },
+  {
+    label: "Team",
+    href: "/team",
+    icon: <MdGroups />,
+  },
+];
 
-const NavLink = ({ children }) => (
+const NavLink = ({ children, href, ...props }) => (
   <Link
+    as={NextLink}
     px={2}
     py={1}
     rounded={"md"}
@@ -30,13 +50,15 @@ const NavLink = ({ children }) => (
       textDecoration: "none",
       bg: useColorModeValue("gray.200", "gray.700"),
     }}
-    href={"#"}
+    href={href}
+    passHref
+    {...props}
   >
     {children}
   </Link>
 );
 
-export default function NavBar() {
+export default function NavBar(...props) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -46,6 +68,7 @@ export default function NavBar() {
       zIndex="55"
       position="fixed"
       width="100%"
+      {...props}
     >
       <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
         <IconButton
@@ -56,10 +79,20 @@ export default function NavBar() {
           onClick={isOpen ? onClose : onOpen}
         />
         <HStack spacing={8} alignItems={"center"}>
-          <Box>Logo</Box>
+          <Box>
+            <NextLink href={"/"} passHref>
+              <Avatar
+                as={Link}
+                size={"md"}
+                src={"fiezt.svg"}
+              />
+            </NextLink>
+          </Box>
           <HStack as={"nav"} spacing={4} display={{ base: "none", md: "flex" }}>
             {Links.map((link) => (
-              <NavLink key={link}>{link}</NavLink>
+              <NavLink key={link.label.toLowerCase()} href={link.href}>
+                {link.label}
+              </NavLink>
             ))}
           </HStack>
         </HStack>
@@ -72,7 +105,17 @@ export default function NavBar() {
         <Box pb={4} display={{ md: "none" }}>
           <Stack as={"nav"} spacing={4}>
             {Links.map((link) => (
-              <NavLink key={link}>{link}</NavLink>
+              <NavLink
+                key={link.label}
+                href={link.href}
+                onClick={onClose}
+                leftIcon={link.icon}
+              >
+                <Flex minWidth="max-content" alignItems={"center"} gap="2">
+                  {link.icon}
+                  {link.label}
+                </Flex>
+              </NavLink>
             ))}
           </Stack>
         </Box>

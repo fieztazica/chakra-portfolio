@@ -4,7 +4,7 @@ import NavBar from "../shared/NavBar";
 
 function AppLayout(props) {
   return (
-    <>
+    <Box display={"flex"} flexDirection={"column"} minHeight={"100vh"}>
       <NavBar />
       <Box
         textAlign="center"
@@ -12,13 +12,12 @@ function AppLayout(props) {
         w={["90%", "85%", "80%"]}
         maxW={800}
         mx="auto"
+        flex={1}
       >
-        <Box pt={"7rem"} pb={10}>
-          {props.children}
-        </Box>
+        <Box mt={20}>{props.children}</Box>
       </Box>
       <Footer />
-    </>
+    </Box>
   );
 }
 
