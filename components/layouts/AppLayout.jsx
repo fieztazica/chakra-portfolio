@@ -14,7 +14,7 @@ function AppLayout(props) {
         mx="auto"
         flex={1}
       >
-        <Box mt={20}>{props.children}</Box>
+        <Box mt={20} mb={20}>{props.children}</Box>
       </Box>
       <Footer />
     </Box>

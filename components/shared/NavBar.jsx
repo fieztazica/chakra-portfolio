@@ -22,16 +22,23 @@ import {
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import ColorModeButton from "./ColorModeButton";
 import NextLink from "next/link";
-import { BsPerson } from "react-icons/bs";
-import { MdGroups } from "react-icons/md";
+import { BsPersonFill } from "react-icons/bs";
+import { MdGroups, MdWork } from "react-icons/md";
 import { FaHome } from "react-icons/fa";
 import { ReactComponent as fieztLogo } from "../../public/fiezt.svg";
+import Logo from "./Logo";
+import { useRouter } from "next/router";
 
 const Links = [
   {
     label: "About",
     href: "/about",
-    icon: <BsPerson />,
+    icon: <BsPersonFill />,
+  },
+  {
+    label: "Projects",
+    href: "/projects",
+    icon: <MdWork />,
   },
   {
     label: "Team",
@@ -40,26 +47,31 @@ const Links = [
   },
 ];
 
-const NavLink = ({ children, href, ...props }) => (
-  <Link
-    as={NextLink}
-    px={2}
-    py={1}
-    rounded={"md"}
-    _hover={{
-      textDecoration: "none",
-      bg: useColorModeValue("gray.200", "gray.700"),
-    }}
-    href={href}
-    passHref
-    {...props}
-  >
-    {children}
-  </Link>
-);
+const NavLink = ({ children, href, rPath, ...props }) => {
+  const bgColor = useColorModeValue("gray.200", "gray.700");
+  return (
+    <Link
+      as={NextLink}
+      px={2}
+      py={1}
+      rounded={"md"}
+      _hover={{
+        textDecoration: "none",
+        bg: bgColor,
+      }}
+      bg={rPath === href ? bgColor : "transparent"}
+      href={href}
+      passHref
+      {...props}
+    >
+      {children}
+    </Link>
+  );
+};
 
 export default function NavBar(...props) {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const router = useRouter();
 
   return (
     <Box
@@ -80,17 +92,17 @@ export default function NavBar(...props) {
         />
         <HStack spacing={8} alignItems={"center"}>
           <Box>
-            <NextLink href={"/"} passHref>
-              <Avatar
-                as={Link}
-                size={"md"}
-                src={"fiezt.svg"}
-              />
+            <NextLink href={"/"}>
+              <Logo />
             </NextLink>
           </Box>
           <HStack as={"nav"} spacing={4} display={{ base: "none", md: "flex" }}>
             {Links.map((link) => (
-              <NavLink key={link.label.toLowerCase()} href={link.href}>
+              <NavLink
+                key={link.label.toLowerCase()}
+                href={link.href}
+                rPath={router.pathname}
+              >
                 {link.label}
               </NavLink>
             ))}

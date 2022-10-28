@@ -32,7 +32,7 @@ function UserCard({
   description,
   tags,
   rank,
-  email,
+  email
 }) {
   return (
     <Center py={6}>

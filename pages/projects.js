@@ -1,16 +1,14 @@
 import { Box, Container, Heading, Text } from "@chakra-ui/react";
 import PageLayout from "../components/layouts/PageLayout";
-import CoreTeam from "../components/team/CoreTeam";
 
-function Team() {
+function Projects() {
   return (
-    <PageLayout title={"Team"} description={"My Working Team."}>
+    <PageLayout title={"Projects"}  description={"My Projects."}>
       <Container minW="100%" maxW="2xl" centerContent>
-        <Heading mb={5}>My Team</Heading>
-        <CoreTeam />
+        <Heading mb={5}>My Projects</Heading>
       </Container>
     </PageLayout>
   );
 }
 
-export default Team;
+export default Projects;

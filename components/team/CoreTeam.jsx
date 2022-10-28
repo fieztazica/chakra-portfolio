@@ -1,4 +1,12 @@
-import { Box, Grid, SimpleGrid, Skeleton, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Grid,
+  SimpleGrid,
+  Skeleton,
+  SkeletonCircle,
+  SkeletonText,
+  Text,
+} from "@chakra-ui/react";
 import React from "react";
 import { Autoplay, Mousewheel, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -26,25 +34,25 @@ function CoreTeam() {
   }, []);
 
   return (
-    <Box width={"100%"}>
-      <Skeleton isLoaded={!loading} fadeDuration={4}>
+    <Box width={"100%"} mb={10}>
+      <Skeleton isLoaded={!loading} fadeDuration={4} height={"400px"}>
         <Box>
-          <Swiper
-            centeredSlides={true}
-            slidesPerView={1}
-            spaceBetween={30}
-            mousewheel={true}
-            autoplay={{
-              delay: 3000,
-              disableOnInteraction: false,
-            }}
-            modules={[Autoplay, Mousewheel]}
-            loop={true}
-            grabCursor={true}
-            loopFillGroupWithBlank={true}
-          >
-            {team ? (
-              team.map((member, index) => (
+          {team && (
+            <Swiper
+              centeredSlides={true}
+              slidesPerView={1}
+              spaceBetween={30}
+              mousewheel={true}
+              autoplay={{
+                delay: 3000,
+                disableOnInteraction: false,
+              }}
+              modules={[Autoplay, Mousewheel]}
+              loop={true}
+              grabCursor={true}
+              loopFillGroupWithBlank={true}
+            >
+              {team.map((member, index) => (
                 <SwiperSlide key={member.user.id}>
                   <UserCard
                     fullName={member.more.name}
@@ -58,11 +66,10 @@ function CoreTeam() {
                     avatarSrc={`https://cdn.discordapp.com/avatars/${member.user.id}/${member.user.avatar}.png?size=256`}
                   />
                 </SwiperSlide>
-              ))
-            ) : (
-              <Text>Failed to fetch data</Text>
-            )}
-          </Swiper>
+              ))}
+            </Swiper>
+          )}
+          {!team && !loading && <Text>Failed to fetch data</Text>}
         </Box>
       </Skeleton>
     </Box>
