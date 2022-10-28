@@ -20,7 +20,7 @@ import {
 } from "@chakra-ui/react";
 import Typist from "react-typist-component";
 
-import "./Hero.module.css";
+import HeroCss from "./Hero.module.css";
 
 const typingStrings = [
   "a student",
@@ -47,6 +47,11 @@ export default function Hero() {
               lineHeight={1.1}
               fontWeight={600}
               fontSize={{ base: "3xl", sm: "4xl", lg: "6xl" }}
+              transition="transform .2s"
+              _hover={{
+                textDecoration: "none",
+                transform: "scale(1.1)",
+              }}
             >
               <Text
                 as={"span"}
@@ -69,19 +74,29 @@ export default function Hero() {
                 {"it's Fiezt!"}
               </Text>
             </Heading>
-            <Text color={"gray.500"}>
+            <Text
+              color={"gray.500"}
+              transition="transform .2s"
+              _hover={{
+                transform: "scale(1.2)",
+              }}
+            >
+              {"I am "}
               <Typist
                 typingDelay={100}
-                cursor={<span className="blink">|</span>}
+                cursor={
+                  <Text as="span" className={HeroCss.blink}>
+                    |
+                  </Text>
+                }
                 loop
               >
-                {"I am "}
                 {typingStrings.map((string) => (
-                  <span key={string}>
+                  <Text as="span" key={string}>
                     {`${string}.`}
                     <Typist.Delay ms={1500} />
                     <Typist.Backspace count={string.length + 1} />
-                  </span>
+                  </Text>
                 ))}
               </Typist>
             </Text>
@@ -94,8 +109,8 @@ export default function Hero() {
             w={"full"}
           >
             <Blob
-              w={"150%"}
-              h={"150%"}
+              w={"160%"}
+              h={"160%"}
               position={"absolute"}
               top={"-20%"}
               left={0}
@@ -109,11 +124,24 @@ export default function Hero() {
               boxShadow={"2xl"}
               width={"full"}
               overflow={"hidden"}
+              transition="transform .2s"
+              _hover={{
+                transform: "scale(1.1)",
+                img: {
+                  transform: "scale(1.1)",
+                },
+              }}
             >
               <IconButton
                 aria-label={"Play Button"}
                 variant={"ghost"}
-                _hover={{ bg: "transparent" }}
+                transition="transform .2s"
+                zIndex={"99"}
+                _hover={{
+                  bg: "transparent",
+                  transform: "translateX(-50%) translateY(-50%) scale(1.2)",
+                  shadow: "lg",
+                }}
                 icon={<PlayIcon w={12} h={12} />}
                 size={"lg"}
                 color={"white"}
@@ -132,13 +160,14 @@ export default function Hero() {
                 src={
                   "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=800&q=80"
                 }
+                transition="transform .2s"
               />
             </Box>
           </Flex>
         </Stack>
       </Container>
       <Modal isOpen={isOpen} onClose={onClose} size={"xl"} isCentered>
-        <ModalOverlay />
+        <ModalOverlay backdropFilter="auto" backdropBlur="2px" />
         <ModalContent>
           <iframe
             width="100%"

@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   Grid,
   SimpleGrid,
   Skeleton,
@@ -20,7 +21,7 @@ function CoreTeam() {
   const [loading, setLoading] = React.useState(false);
   const [team, setTeam] = React.useState(null);
 
-  React.useEffect(() => {
+  const fetchTeam = () => {
     setLoading(true);
     fetch("/api/discord/getteam")
       .then(async (data) => {
@@ -31,6 +32,10 @@ function CoreTeam() {
       .catch((error) => {
         setLoading(false);
       });
+  };
+
+  React.useEffect(() => {
+    fetchTeam();
   }, []);
 
   return (
@@ -69,7 +74,11 @@ function CoreTeam() {
               ))}
             </Swiper>
           )}
-          {!team && !loading && <Text>Failed to fetch data</Text>}
+          {!team && !loading && (
+            <Button onClick={fetchTeam}>
+              Failed to fetch data. Click to retry
+            </Button>
+          )}
         </Box>
       </Skeleton>
     </Box>

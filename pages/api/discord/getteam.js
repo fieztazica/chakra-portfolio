@@ -16,5 +16,5 @@ export default async function handler(req, res) {
         more: team.find((tm) => tm.discordId === member.user.id),
       };
     });
-  res.json(members);
+  res.status(200).json(members);
 }

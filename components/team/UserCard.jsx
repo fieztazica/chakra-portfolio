@@ -40,7 +40,7 @@ function UserCard({
         maxW={"320px"}
         w={"full"}
         bg={useColorModeValue("white", "gray.900")}
-        boxShadow={"2xl"}
+        boxShadow={"lg"}
         rounded={"lg"}
         p={6}
         textAlign={"center"}

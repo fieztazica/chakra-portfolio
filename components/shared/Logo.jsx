@@ -12,7 +12,6 @@ function Logo() {
       transition="transform .2s"
       _hover={{
         textDecoration: "none",
-        opacity: "50%",
         transform: "scale(1.2)",
       }}
     />

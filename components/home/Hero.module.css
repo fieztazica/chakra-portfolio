@@ -1,9 +1,8 @@
 .blink {
-    animation: blinker .75s linear infinite;
-    color: #ffffff;
+    animation: blinker 1s steps(2) infinite;
 }
 @keyframes blinker {
-    50% {
+    0% {
         opacity: 0;
     }
 }
