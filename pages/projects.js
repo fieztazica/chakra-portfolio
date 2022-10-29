@@ -1,6 +1,6 @@
 import { Box, Container, Heading, Text } from "@chakra-ui/react";
 import PageLayout from "../components/layouts/PageLayout";
-import GitHubRepo from "../components/projects/GithubRepo";
+import GitHubRepo from "../components/projects/GitHubRepo";
 
 function Projects() {
   return (
