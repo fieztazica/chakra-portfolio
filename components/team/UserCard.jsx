@@ -32,10 +32,11 @@ function UserCard({
   description,
   tags,
   rank,
-  email
+  email,
+  ...props
 }) {
   return (
-    <Center py={6}>
+    <Center py={6} {...props}>
       <Box
         maxW={"320px"}
         w={"full"}

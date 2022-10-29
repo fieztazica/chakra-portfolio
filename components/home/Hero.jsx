@@ -17,6 +17,7 @@ import {
   ModalOverlay,
   ModalContent,
   ModalBody,
+  Center,
 } from "@chakra-ui/react";
 import Typist from "react-typist-component";
 
@@ -74,32 +75,34 @@ export default function Hero() {
                 {"it's Fiezt!"}
               </Text>
             </Heading>
-            <Text
-              color={"gray.500"}
-              transition="transform .2s"
-              _hover={{
-                transform: "scale(1.2)",
-              }}
-            >
-              {"I am "}
-              <Typist
-                typingDelay={100}
-                cursor={
-                  <Text as="span" className={HeroCss.blink}>
-                    |
-                  </Text>
-                }
-                loop
+            <Center>
+              <Text
+                color={"gray.500"}
+                transition="transform .2s"
+                _hover={{
+                  transform: "scale(1.2)",
+                }}
               >
-                {typingStrings.map((string) => (
-                  <Text as="span" key={string}>
-                    {`${string}.`}
-                    <Typist.Delay ms={1500} />
-                    <Typist.Backspace count={string.length + 1} />
-                  </Text>
-                ))}
-              </Typist>
-            </Text>
+                {"I am "}
+                <Typist
+                  typingDelay={100}
+                  cursor={
+                    <Text as="span" className={HeroCss.blink}>
+                      |
+                    </Text>
+                  }
+                  loop
+                >
+                  {typingStrings.map((string) => (
+                    <Text as="span" key={string}>
+                      {`${string}.`}
+                      <Typist.Delay ms={1500} />
+                      <Typist.Backspace count={string.length + 1} />
+                    </Text>
+                  ))}
+                </Typist>
+              </Text>
+            </Center>
           </Stack>
           <Flex
             flex={1}

@@ -18,7 +18,7 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 
-const SocialButton = ({ children, label, href }, ...props) => {
+const SocialButton = ({ children, label, href , ...props}) => {
   return (
     <chakra.button
       bg={useColorModeValue("blackAlpha.100", "whiteAlpha.100")}

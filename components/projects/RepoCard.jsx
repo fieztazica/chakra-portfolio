@@ -1,21 +1,29 @@
-import { Box, Flex, HStack, Link, Tag, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  HStack,
+  Link,
+  StackDivider,
+  Tag,
+  Text,
+} from "@chakra-ui/react";
 import moment from "moment/moment";
 
-function RepoCard({ data }, ...props) {
+function RepoCard({ data, ...props }) {
   return (
     <Flex
       w="full"
       mx="auto"
       bg="white"
       _dark={{
-        bg: "gray.800",
+        bg: "gray.900",
       }}
       shadow="lg"
       rounded="lg"
       overflow="hidden"
       transition="transform .2s"
       _hover={{
-        transform: "scale(1.05)",
+        transform: "translateX(10px)",
       }}
       {...props}
     >
@@ -45,7 +53,7 @@ function RepoCard({ data }, ...props) {
             <Tag size={"sm"}>{`${data.visibility}`.toUpperCase()}</Tag>
           </HStack>
           <Text minW={"max-content"} color="gray.500" fontSize={"xs"}>
-            {data.stargazers_count}
+            {data.size}
           </Text>
         </Flex>
         {data.description && (
@@ -70,8 +78,20 @@ function RepoCard({ data }, ...props) {
             ))}
           </HStack>
         )}
-        <HStack spacing={2} alignItems={"center"} mt={3}>
-          <Text>{`${data.language || ""}`}</Text>
+        <HStack
+          divider={<StackDivider />}
+          spacing={2}
+          alignItems={"center"}
+          mt={3}
+        >
+          {data.language && <Text>{`${data.language}`}</Text>}
+          {data.stargazers_count && <Text>{`${data.stargazers_count}`}</Text>}
+          {data.forks && <Text>{`${data.forks}`}</Text>}
+          {data.license && (
+            <Link href={data.license.url} target="_blank">{`${
+              data.license.name || ""
+            }`}</Link>
+          )}
           <Text>{`${moment(data.updated_at).fromNow()}`}</Text>
         </HStack>
       </Box>

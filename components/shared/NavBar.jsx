@@ -68,7 +68,7 @@ const NavLink = ({ children, href, rPath }) => {
   );
 };
 
-export default function NavBar(...props) {
+export default function NavBar(props) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const router = useRouter();
 
@@ -96,9 +96,9 @@ export default function NavBar(...props) {
             </NextLink>
           </Box>
           <HStack as={"nav"} spacing={4} display={{ base: "none", md: "flex" }}>
-            {Links.map((link) => (
+            {Links.map((link, i) => (
               <NavLink
-                key={link.label.toLowerCase()}
+                key={i}
                 href={link.href}
                 rPath={router.pathname}
               >
@@ -115,9 +115,9 @@ export default function NavBar(...props) {
       {isOpen ? (
         <Box pb={4} display={{ md: "none" }}>
           <Stack as={"nav"} spacing={4}>
-            {Links.map((link) => (
+            {Links.map((link, i) => (
               <NavLink
-                key={link.label}
+                key={i}
                 href={link.href}
                 onClick={onClose}
                 leftIcon={link.icon}

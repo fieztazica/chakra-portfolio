@@ -1,6 +1,6 @@
 import { Avatar, useColorMode } from "@chakra-ui/react";
 
-function Logo() {
+function Logo(props) {
   const { colorMode } = useColorMode();
   return (
     <Avatar
@@ -14,6 +14,7 @@ function Logo() {
         textDecoration: "none",
         transform: "scale(1.2)",
       }}
+      {...props}
     />
   );
 }

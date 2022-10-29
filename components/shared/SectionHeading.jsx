@@ -1,6 +1,6 @@
 import { Box } from "@chakra-ui/react";
 
-function SectionHeading(props) {
+function SectionHeading({ children, ...props }) {
   return (
     <Box
       as="span"
@@ -9,7 +9,7 @@ function SectionHeading(props) {
       w={"100%"}
       {...props}
     >
-      {props.children}
+      {children}
       <Box
         as="span"
         display="block"

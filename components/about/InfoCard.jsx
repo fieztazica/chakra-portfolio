@@ -16,7 +16,7 @@ function InfoCard(props) {
       mx="auto"
       bg="white"
       _dark={{
-        bg: "gray.800",
+        bg: "gray.900",
       }}
       shadow="lg"
       rounded="lg"
