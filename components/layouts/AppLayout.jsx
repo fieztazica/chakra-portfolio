@@ -7,8 +7,6 @@ function AppLayout(props) {
     <Box display={"flex"} flexDirection={"column"} minHeight={"100vh"}>
       <NavBar />
       <Box
-        textAlign="center"
-        fontSize="xl"
         w={["90%", "85%", "80%"]}
         maxW={800}
         mx="auto"

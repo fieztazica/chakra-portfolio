@@ -35,6 +35,7 @@ const SocialButton = ({ children, label, href }, ...props) => {
       transition={"background 0.3s ease"}
       _hover={{
         bg: useColorModeValue("blackAlpha.200", "whiteAlpha.200"),
+        opacity: "50%"
       }}
       {...props}
     >
@@ -67,7 +68,7 @@ export default function Footer() {
     <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
       <Container
         as={Stack}
-        maxW={"6xl"}
+        maxW={"full"}
         py={4}
         direction={{ base: "column", md: "row" }}
         spacing={4}

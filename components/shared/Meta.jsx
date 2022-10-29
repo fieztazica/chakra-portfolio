@@ -9,9 +9,12 @@ const Meta = ({ title, keywords, description, image }) => {
       <meta name="keywords" content={keywords} />
       <meta name="description" content={description} />
       <meta property="og:title" content={title} />
-      {image && <meta property="og:image" content={image} />}
+      <meta property="og:image" content={image} />
       <meta property="og:description" content={description} />
-      <meta property="og:site_name" content={title} />
+      <meta
+        property="og:site_name"
+        content={title.includes("Fiezt") ? title : title.concat(" | Fiezt")}
+      />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       {image && (

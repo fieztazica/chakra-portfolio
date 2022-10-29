@@ -5,7 +5,7 @@ import { getGuildMember } from "../../../lib/discord";
 
 export default async function handler(req, res) {
   const data = await getGuildMember();
-  console.log(data);
+  // console.log(data);
   const members = data
     .filter((member) => {
       const discordIds = team.map((m) => m.discordId);

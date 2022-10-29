@@ -47,7 +47,7 @@ const Links = [
   },
 ];
 
-const NavLink = ({ children, href, rPath, ...props }) => {
+const NavLink = ({ children, href, rPath }) => {
   const bgColor = useColorModeValue("gray.200", "gray.700");
   return (
     <Link
@@ -62,7 +62,6 @@ const NavLink = ({ children, href, rPath, ...props }) => {
       bg={rPath === href ? bgColor : "transparent"}
       href={href}
       passHref
-      {...props}
     >
       {children}
     </Link>
