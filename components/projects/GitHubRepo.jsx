@@ -3,7 +3,7 @@ import React from "react";
 import { data } from "../../data/github/fake";
 import { getOwnerRepos } from "../../lib/github";
 import SectionHeading from "../shared/SectionHeading";
-import RepoCard from "./repoCard";
+import RepoCard from "./RepoCard";
 
 const array = [data];
 
@@ -27,7 +27,7 @@ function GitHubRepo() {
   React.useEffect(() => {
     fetchRepos();
   }, []);
-  
+
   return (
     <>
       <SectionHeading mb={4}>
