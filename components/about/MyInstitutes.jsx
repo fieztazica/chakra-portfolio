@@ -39,7 +39,7 @@ function MyInstitutes() {
           My Institutes
         </Text>
       </SectionHeading>
-      <Box mt={2}>
+      <Box mt={2} rounded="md">
         {institutes.map((i, index) => {
           return (
             <InfoCard

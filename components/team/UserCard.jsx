@@ -35,12 +35,13 @@ function UserCard({
   email,
   ...props
 }) {
+  const lightVariant = useColorModeValue("outline");
   return (
     <Center py={6} {...props}>
       <Box
         maxW={"320px"}
         w={"full"}
-        bg={useColorModeValue("white", "gray.900")}
+        bg={useColorModeValue("gray.100", "gray.900")}
         boxShadow={"lg"}
         rounded={"lg"}
         p={6}
@@ -80,7 +81,11 @@ function UserCard({
         {tags && tags.length && (
           <Stack align={"center"} justify={"center"} direction={"row"} mt={6}>
             {tags.map((tag, index) => (
-              <Tag colorScheme="green" key={index}>{`${tag}`}</Tag>
+              <Tag
+                colorScheme="green"
+                key={index}
+                variant={lightVariant}
+              >{`${tag}`}</Tag>
             ))}
           </Stack>
         )}
@@ -91,11 +96,10 @@ function UserCard({
               flex={1}
               fontSize={"sm"}
               rounded={"full"}
-              _focus={{
-                bg: "gray.200",
-              }}
-              as="a"
+              as={Link}
               href={`mailto:${email}`}
+              variant={lightVariant}
+              _hover={{ textDecoration: "none" }}
             >
               Message
             </Button>

@@ -64,14 +64,15 @@ export default function Hero() {
                   position: "absolute",
                   bottom: 1,
                   left: 0,
-                  bg: "red.400",
+                  bg: "cyan.700",
                   zIndex: -1,
+                  rounded: "md",
                 }}
               >
                 Hello there,
               </Text>
               <br />
-              <Text as={"span"} color={"red.400"}>
+              <Text as={"span"} color={"cyan.700"}>
                 {"it's Fiezt!"}
               </Text>
             </Heading>
@@ -118,7 +119,7 @@ export default function Hero() {
               top={"-20%"}
               left={0}
               zIndex={-1}
-              color={useColorModeValue("red.50", "red.400")}
+              color={useColorModeValue("cyan.200", "cyan.800")}
             />
             <Box
               position={"relative"}

@@ -7,17 +7,16 @@ import {
   Stack,
   AspectRatio,
   Image,
+  useColorModeValue,
 } from "@chakra-ui/react";
 
 function InfoCard(props) {
+  const lightVariant = useColorModeValue("outline");
   return (
     <Flex
       w="full"
       mx="auto"
-      bg="white"
-      _dark={{
-        bg: "gray.900",
-      }}
+      bg={useColorModeValue("gray.100", "gray.900")}
       shadow="lg"
       rounded="lg"
       overflow="hidden"
@@ -69,13 +68,24 @@ function InfoCard(props) {
         >
           {props.role}
         </Text>
-        <HStack spacing={1} alignItems={"center"} mt={3}>
+        <Stack
+          spacing={1}
+          direction={["column", "row"]}
+          alignItems={["left", "center"]}
+          mt={3}
+        >
           {props.skills.map((skill, i) => (
-            <Tag key={i} size={"sm"} colorScheme={"cyan"}>
+            <Tag
+              key={i}
+              size={"sm"}
+              colorScheme={"cyan"}
+              maxW={"max-content"}
+              variant={lightVariant}
+            >
               <Text noOfLines={[1, 2, 3]}>{skill}</Text>
             </Tag>
           ))}
-        </HStack>
+        </Stack>
       </Box>
     </Flex>
   );

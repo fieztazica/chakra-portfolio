@@ -4,20 +4,26 @@ import {
   ButtonGroup,
   Center,
   Divider,
+  Fade,
+  Flex,
+  HStack,
   Spinner,
   Text,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import React from "react";
 import { data } from "../../data/github/fake";
-import { getOwnerRepos } from "../../lib/github";
+import { getOwnerRepos, getRepo } from "../../lib/github";
+import ScrollBox from "../shared/ScrollBox";
 import SectionHeading from "../shared/SectionHeading";
 import RepoCard from "./RepoCard";
+import ReposSkeleton from "./ReposSkeleton";
 
 const array = [data];
 
 function GitHubRepo() {
-  const [repos, setRepos] = React.useState([data]);
   const [loading, setLoading] = React.useState(false);
+  const [repos, setRepos] = React.useState([]);
   const [page, setPage] = React.useState(1);
 
   function fetchRepos() {
@@ -39,15 +45,25 @@ function GitHubRepo() {
   return (
     <>
       <SectionHeading mb={4}>
-        <Text as="b" fontSize={"xl"}>
-          GitHub Repositories
-        </Text>
+        <Flex>
+          <HStack>
+            <Text as="b" fontSize={"xl"}>
+              GitHub Repositories
+            </Text>
+            <Fade in={loading}>
+              <Spinner />
+            </Fade>
+          </HStack>
+          <ButtonGroup></ButtonGroup>
+        </Flex>
       </SectionHeading>
-      <Box mt={2} maxH={"xl"} overflow="auto" pr={4}>
+      <ScrollBox mt={2} maxH={"md"} overflow="auto" pr={4} rounded="md">
+        {loading && <ReposSkeleton mt={2} mb={2} />}
         {repos.map((repo, i) => {
           return <RepoCard key={i} mt={2} mb={2} data={repo} />;
         })}
-      </Box>
+      </ScrollBox>
+
       <Center mt={4}>
         <ButtonGroup spacing={5}>
           <Button

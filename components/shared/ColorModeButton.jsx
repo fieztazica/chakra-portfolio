@@ -6,7 +6,10 @@ function ColorModeButton(props) {
   return (
     <IconButton
       icon={colorMode === "dark" ? <SunIcon /> : <MoonIcon />}
+      rounded={"full"}
+      variant={"ghost"}
       onClick={toggleColorMode}
+      aria-label={"Color Mode Toggle"}
       {...props}
     />
   );

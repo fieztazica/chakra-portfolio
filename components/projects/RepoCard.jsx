@@ -1,29 +1,45 @@
 import {
   Box,
+  Button,
+  Circle,
   Flex,
   HStack,
   Link,
+  Popover,
+  PopoverBody,
+  PopoverCloseButton,
+  PopoverContent,
+  PopoverHeader,
+  PopoverTrigger,
+  Stack,
   StackDivider,
   Tag,
   Text,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import moment from "moment/moment";
+import numeral from "numeral";
+import { TbStar, TbGitFork, TbFile, TbLicense } from "react-icons/tb";
 
 function RepoCard({ data, ...props }) {
+  function stringToHex(string) {
+    return string
+      .split("")
+      .map((c) => c.charCodeAt(0).toString(16).padStart(2, "0"))
+      .join("");
+  }
   return (
     <Flex
       w="full"
       mx="auto"
-      bg="white"
-      _dark={{
-        bg: "gray.900",
-      }}
+      bg={useColorModeValue("gray.100", "gray.900")}
       shadow="lg"
       rounded="lg"
       overflow="hidden"
-      transition="transform .2s"
+      // transition="transform .2s"
+      transitionDuration={".2s"}
       _hover={{
-        transform: "translateX(10px)",
+        transform: "translateX(5px)",
       }}
       {...props}
     >
@@ -35,7 +51,12 @@ function RepoCard({ data, ...props }) {
         }}
       >
         <Flex justifyContent="space-between" alignItems="center">
-          <HStack spacing={2}>
+          <Stack
+            spacing={2}
+            mr={2}
+            direction={["column", "row"]}
+            alignItems={["left", "center"]}
+          >
             <Text
               as={Link}
               href={data.html_url}
@@ -50,11 +71,42 @@ function RepoCard({ data, ...props }) {
             >
               {data.name}
             </Text>
-            <Tag size={"sm"}>{`${data.visibility}`.toUpperCase()}</Tag>
-          </HStack>
-          <Text minW={"max-content"} color="gray.500" fontSize={"xs"}>
-            {data.size}
-          </Text>
+            <Tag
+              size={"sm"}
+              w={"max-content"}
+              h={"10px"}
+              variant={useColorModeValue("outline")}
+            >
+              {`${data.visibility}`.toUpperCase()}
+            </Tag>
+          </Stack>
+          <Stack
+            ml={2}
+            minW={"max-content"}
+            divider={<StackDivider />}
+            fontSize={"xs"}
+            color="gray.500"
+            direction={["column", "row"]}
+          >
+            {data.stargazers_count && (
+              <HStack>
+                <TbStar />
+                <Text>{`${data.stargazers_count}`}</Text>
+              </HStack>
+            )}
+            {data.forks_count && (
+              <HStack>
+                <TbGitFork />
+                <Text>{`${data.forks_count}`}</Text>
+              </HStack>
+            )}
+            {data.size && (
+              <HStack>
+                <TbFile />
+                <Text>{`${numeral(data.size * 1024).format("0.0b")}`}</Text>
+              </HStack>
+            )}
+          </Stack>
         </Flex>
         {data.description && (
           <Text
@@ -70,10 +122,10 @@ function RepoCard({ data, ...props }) {
           </Text>
         )}
         {data?.topics && (
-          <HStack spacing={1} alignItems={"center"} mt={3}>
+          <HStack spacing={1} alignItems={"center"} mt={3} maxW={[80, "full"]}>
             {data.topics.map((topic, i) => (
               <Tag key={i} size={"sm"} colorScheme={"cyan"}>
-                <Text noOfLines={[1, 2, 3]}>{topic}</Text>
+                <Text noOfLines={1}>{topic}</Text>
               </Tag>
             ))}
           </HStack>
@@ -82,17 +134,31 @@ function RepoCard({ data, ...props }) {
           divider={<StackDivider />}
           spacing={2}
           alignItems={"center"}
-          mt={3}
+          mt={2}
+          color={"gray.500"}
         >
-          {data.language && <Text>{`${data.language}`}</Text>}
-          {data.stargazers_count && <Text>{`${data.stargazers_count}`}</Text>}
-          {data.forks && <Text>{`${data.forks}`}</Text>}
-          {data.license && (
-            <Link href={data.license.url} target="_blank">{`${
-              data.license.name || ""
-            }`}</Link>
+          {data.language && (
+            <HStack>
+              <Circle
+                size={["10px", "16px"]}
+                bg={`#${stringToHex(`${data.language}`).substring(0, 6)}`}
+              />
+              <Text
+                noOfLines={1}
+                maxW={["12", "full"]}
+              >{`${data.language}`}</Text>
+            </HStack>
           )}
-          <Text>{`${moment(data.updated_at).fromNow()}`}</Text>
+          {data.license && (
+            <HStack>
+              <TbLicense w={["10px", "16px"]} />
+              <Text
+                noOfLines={1}
+                maxW={["12", "full"]}
+              >{`${data.license.name}`}</Text>
+            </HStack>
+          )}
+          <Text noOfLines={1}>{`${moment(data.updated_at).fromNow()}`}</Text>
         </HStack>
       </Box>
     </Flex>

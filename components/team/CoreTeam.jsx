@@ -1,11 +1,14 @@
 import {
   Box,
   Button,
+  Fade,
   Grid,
+  HStack,
   SimpleGrid,
   Skeleton,
   SkeletonCircle,
   SkeletonText,
+  Spinner,
   Text,
 } from "@chakra-ui/react";
 import React from "react";
@@ -42,12 +45,22 @@ function CoreTeam() {
   return (
     <>
       <SectionHeading mb={4}>
-        <Text as="b" fontSize={"xl"}>
-          Core Team
-        </Text>
+        <HStack>
+          <Text as="b" fontSize={"xl"}>
+            Core Team
+          </Text>
+          <Fade in={loading}>
+            <Spinner />
+          </Fade>
+        </HStack>
       </SectionHeading>
       <Box width={"100%"} mb={10}>
-        <Skeleton isLoaded={!loading} fadeDuration={4} height={"400px"}>
+        <Skeleton
+          isLoaded={!loading}
+          fadeDuration={4}
+          height={"400px"}
+          rounded="md"
+        >
           <Box>
             {team && (
               <Swiper

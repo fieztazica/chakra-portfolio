@@ -18,13 +18,13 @@ import {
   Stack,
   Spacer,
   Image,
+  Divider,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import ColorModeButton from "./ColorModeButton";
 import NextLink from "next/link";
 import { BsPersonFill } from "react-icons/bs";
 import { MdGroups, MdWork } from "react-icons/md";
-import { FaHome } from "react-icons/fa";
 import { ReactComponent as fieztLogo } from "../../public/fiezt.svg";
 import Logo from "./Logo";
 import { useRouter } from "next/router";
@@ -47,24 +47,19 @@ const Links = [
   },
 ];
 
-const NavLink = ({ children, href, rPath }) => {
-  const bgColor = useColorModeValue("gray.200", "gray.700");
+const NavLink = ({ children, href, rPath, ...props }) => {
   return (
-    <Link
+    <Button
       as={NextLink}
-      px={2}
-      py={1}
-      rounded={"md"}
-      _hover={{
-        textDecoration: "none",
-        bg: bgColor,
-      }}
-      bg={rPath === href ? bgColor : "transparent"}
+      size="sm"
+      variant={rPath === href ? "solid" : "ghost"}
+      colorScheme={rPath === href ? "cyan" : "gray"}
       href={href}
       passHref
+      {...props}
     >
       {children}
-    </Link>
+    </Button>
   );
 };
 
@@ -83,11 +78,12 @@ export default function NavBar(props) {
     >
       <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
         <IconButton
-          size={"md"}
           icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
           aria-label={"Open Menu"}
           display={{ md: "none" }}
           onClick={isOpen ? onClose : onOpen}
+          variant="ghost"
+          rounded={"full"}
         />
         <HStack spacing={8} alignItems={"center"}>
           <Box>
@@ -95,41 +91,35 @@ export default function NavBar(props) {
               <Logo />
             </NextLink>
           </Box>
-          <HStack as={"nav"} spacing={4} display={{ base: "none", md: "flex" }}>
+          <HStack as={"nav"} display={{ base: "none", md: "flex" }}>
             {Links.map((link, i) => (
-              <NavLink
-                key={i}
-                href={link.href}
-                rPath={router.pathname}
-              >
+              <NavLink key={i} href={link.href} rPath={router.pathname}>
                 {link.label}
               </NavLink>
             ))}
           </HStack>
         </HStack>
-        <Flex alignItems={"center"}>
-          <ColorModeButton />
-        </Flex>
+        <ColorModeButton />
       </Flex>
 
       {isOpen ? (
-        <Box pb={4} display={{ md: "none" }}>
-          <Stack as={"nav"} spacing={4}>
-            {Links.map((link, i) => (
-              <NavLink
-                key={i}
-                href={link.href}
-                onClick={onClose}
-                leftIcon={link.icon}
-              >
-                <Flex minWidth="max-content" alignItems={"center"} gap="2">
-                  {link.icon}
+        <>
+          <Divider />
+          <Box pt={2} pb={4} display={{ md: "none" }}>
+            <Stack as={"nav"} spacing={4}>
+              {Links.map((link, i) => (
+                <NavLink
+                  key={i}
+                  href={link.href}
+                  onClick={onClose}
+                  leftIcon={link.icon}
+                >
                   {link.label}
-                </Flex>
-              </NavLink>
-            ))}
-          </Stack>
-        </Box>
+                </NavLink>
+              ))}
+            </Stack>
+          </Box>
+        </>
       ) : null}
     </Box>
   );
