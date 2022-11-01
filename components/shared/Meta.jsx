@@ -9,11 +9,11 @@ const Meta = ({ title, keywords, description, image, isAlone = false }) => {
       <meta charSet="utf-8" />
       <meta name="keywords" content={keywords} />
       <meta name="description" content={description} />
-      <meta property="og:title" content={title} />
+      <meta property="og:title" content={displayTitle} />
       <meta property="og:image" content={image} />
       <meta property="og:description" content={description} />
       <meta property="og:site_name" content={displayTitle} />
-      <meta name="twitter:title" content={title} />
+      <meta name="twitter:title" content={displayTitle} />
       <meta name="twitter:description" content={description} />
       {image && (
         <>
