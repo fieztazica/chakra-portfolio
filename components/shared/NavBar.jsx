@@ -1,4 +1,3 @@
-import { ReactNode } from "react";
 import {
   Box,
   Flex,
@@ -48,18 +47,18 @@ const Links = [
 ];
 
 const NavLink = ({ children, href, rPath, ...props }) => {
+  const isActive = rPath === href;
   return (
-    <Button
-      as={NextLink}
-      size="sm"
-      variant={rPath === href ? "solid" : "ghost"}
-      colorScheme={rPath === href ? "cyan" : "gray"}
-      href={href}
-      passHref
-      {...props}
-    >
-      {children}
-    </Button>
+    <NextLink href={href}>
+      <Button
+        size="sm"
+        variant={isActive ? "solid" : "ghost"}
+        colorScheme={isActive ? "cyan" : "gray"}
+        {...props}
+      >
+        {children}
+      </Button>
+    </NextLink>
   );
 };
 
@@ -82,8 +81,8 @@ export default function NavBar(props) {
           aria-label={"Open Menu"}
           display={{ md: "none" }}
           onClick={isOpen ? onClose : onOpen}
-          variant="ghost"
-          rounded={"full"}
+          variant={useColorModeValue("solid", "ghost")}
+          isRound
         />
         <HStack spacing={8} alignItems={"center"}>
           <Box>

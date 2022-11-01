@@ -1,6 +1,7 @@
 import Head from "next/head";
 
-const Meta = ({ title, keywords, description, image }) => {
+const Meta = ({ title, keywords, description, image, isAlone = false }) => {
+  const displayTitle = isAlone ? title : title.concat(" | Fiezt");
   return (
     <Head>
       <link rel="icon" href="/favicon.ico" />
@@ -11,10 +12,7 @@ const Meta = ({ title, keywords, description, image }) => {
       <meta property="og:title" content={title} />
       <meta property="og:image" content={image} />
       <meta property="og:description" content={description} />
-      <meta
-        property="og:site_name"
-        content={title.includes("Fiezt") ? title : title.concat(" | Fiezt")}
-      />
+      <meta property="og:site_name" content={displayTitle} />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       {image && (
@@ -23,9 +21,7 @@ const Meta = ({ title, keywords, description, image }) => {
           <meta name="twitter:card" content="summary_large_image" />
         </>
       )}
-      <title>
-        {title.includes("Fiezt") ? title : title.concat(" | Fiezt")}
-      </title>
+      <title>{displayTitle}</title>
     </Head>
   );
 };

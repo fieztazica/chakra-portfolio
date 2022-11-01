@@ -5,7 +5,7 @@ import PageLayout from "../components/layouts/PageLayout";
 
 export default function Home() {
   return (
-    <PageLayout title={"Home"} description={"Fiezt says Hi!"}>
+    <PageLayout title={"Fiezt"} description={"Fiezt says Hi!"} isAlone>
       <Container minW="100%" maxW="2xl">
         <Hero />
       </Container>

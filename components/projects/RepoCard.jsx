@@ -5,6 +5,8 @@ import {
   Flex,
   HStack,
   Link,
+  List,
+  ListItem,
   Popover,
   PopoverBody,
   PopoverCloseButton,
@@ -16,6 +18,7 @@ import {
   Tag,
   Text,
   useColorModeValue,
+  Wrap,
 } from "@chakra-ui/react";
 import moment from "moment/moment";
 import numeral from "numeral";
@@ -122,13 +125,15 @@ function RepoCard({ data, ...props }) {
           </Text>
         )}
         {data?.topics && (
-          <HStack spacing={1} alignItems={"center"} mt={3} maxW={[80, "full"]}>
+          <List as={Wrap} mt={3}>
             {data.topics.map((topic, i) => (
-              <Tag key={i} size={"sm"} colorScheme={"cyan"}>
-                <Text noOfLines={1}>{topic}</Text>
-              </Tag>
+              <ListItem key={i}>
+                <Tag size={"sm"} colorScheme={"cyan"}>
+                  <Text noOfLines={1}>{topic}</Text>
+                </Tag>
+              </ListItem>
             ))}
-          </HStack>
+          </List>
         )}
         <HStack
           divider={<StackDivider />}

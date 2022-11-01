@@ -99,7 +99,6 @@ function UserCard({
               as={Link}
               href={`mailto:${email}`}
               variant={lightVariant}
-              _hover={{ textDecoration: "none" }}
             >
               Message
             </Button>

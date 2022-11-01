@@ -8,6 +8,9 @@ import {
   AspectRatio,
   Image,
   useColorModeValue,
+  Wrap,
+  List,
+  ListItem,
 } from "@chakra-ui/react";
 
 function InfoCard(props) {
@@ -68,24 +71,20 @@ function InfoCard(props) {
         >
           {props.role}
         </Text>
-        <Stack
-          spacing={1}
-          direction={["column", "row"]}
-          alignItems={["left", "center"]}
-          mt={3}
-        >
+        <List as={Wrap} mt={3}>
           {props.skills.map((skill, i) => (
-            <Tag
-              key={i}
-              size={"sm"}
-              colorScheme={"cyan"}
-              maxW={"max-content"}
-              variant={lightVariant}
-            >
-              <Text noOfLines={[1, 2, 3]}>{skill}</Text>
-            </Tag>
+            <ListItem key={i}>
+              <Tag
+                size={"sm"}
+                colorScheme={"cyan"}
+                maxW={"max-content"}
+                variant={lightVariant}
+              >
+                <Text noOfLines={1}>{skill}</Text>
+              </Tag>
+            </ListItem>
           ))}
-        </Stack>
+        </List>
       </Box>
     </Flex>
   );

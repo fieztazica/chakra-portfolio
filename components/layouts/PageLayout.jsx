@@ -8,13 +8,21 @@ const variants = {
   exit: { opacity: 0, x: 0, y: -100 },
 };
 
-const PageLayout = ({ children, title, description, keywords, image }) => (
+const PageLayout = ({
+  children,
+  title,
+  description,
+  keywords,
+  image,
+  isAlone = false,
+}) => (
   <>
     <Meta
       title={title}
       description={description}
       keywords={keywords}
       image={image}
+      isAlone={isAlone}
     />
     <motion.main
       initial="hidden"
