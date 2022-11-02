@@ -9,7 +9,7 @@ export const socials = [
   },
   {
     label: "Facebook",
-    href: "https://www.facebook.com/fiezt.1492",
+    href: "https://www.facebook.com/fieztazica",
     icon: <FaFacebook />,
   },
   {

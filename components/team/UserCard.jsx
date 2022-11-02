@@ -1,134 +1,138 @@
 import {
-  Avatar,
-  Badge,
-  Box,
-  Button,
-  Center,
-  Heading,
-  Link,
-  Stack,
-  Tag,
-  Text,
-  Tooltip,
-  useColorModeValue,
+    Avatar,
+    Box,
+    Button,
+    Center,
+    Heading,
+    Stack, StackDivider,
+    Tag,
+    Text,
+    Tooltip,
+    useColorModeValue, VStack, Wrap, WrapItem,
 } from "@chakra-ui/react";
 
-function Description({ children }) {
-  return (
-    <Text
-      textAlign={"center"}
-      color={useColorModeValue("gray.700", "gray.400")}
-      px={3}
-    >
-      {children}
-    </Text>
-  );
+function Description({children}) {
+    return (
+        <Text
+            textAlign={"center"}
+            color={useColorModeValue("gray.700", "gray.400")}
+            px={3}
+        >
+            {children}
+        </Text>
+    );
 }
 
 function UserCard({
-  fullName,
-  userName,
-  avatarSrc,
-  description,
-  tags,
-  rank,
-  email,
-  ...props
-}) {
-  const lightVariant = useColorModeValue("outline");
-  return (
-    <Center py={6} {...props}>
-      <Box
-        maxW={"320px"}
-        w={"full"}
-        bg={useColorModeValue("gray.100", "gray.900")}
-        boxShadow={"lg"}
-        rounded={"lg"}
-        p={6}
-        textAlign={"center"}
-      >
-        <Tooltip label={`${fullName}'s Discord avatar`}>
-          <Avatar
-            size={"xl"}
-            name={fullName}
-            src={avatarSrc}
-            alt={fullName}
-            mb={4}
-            pos={"relative"}
-            //   _after={{
-            //     content: '""',
-            //     w: 4,
-            //     h: 4,
-            //     bg: "green.300",
-            //     border: "2px solid white",
-            //     rounded: "full",
-            //     pos: "absolute",
-            //     bottom: 0,
-            //     right: 3,
-            //   }}
-          />
-        </Tooltip>
+                      fullName,
+                      userName,
+                      avatarSrc,
+                      description,
+                      tags,
+                      email,
+                      action,
+                      ...props
+                  }) {
+    const lightVariant = useColorModeValue("outline");
 
-        <Heading fontSize={"2xl"} fontFamily={"body"}>
-          <Tooltip label={fullName}>{fullName}</Tooltip>
-        </Heading>
-        <Text fontWeight={600} color={"gray.500"} mb={4}>
-          <Tooltip label={`${fullName}'s Discord tag`}>{userName}</Tooltip>
-        </Text>
-
-        {description && <Description>{description}</Description>}
-
-        {tags && tags.length && (
-          <Stack align={"center"} justify={"center"} direction={"row"} mt={6}>
-            {tags.map((tag, index) => (
-              <Tag
-                colorScheme="green"
-                key={index}
-                variant={lightVariant}
-              >{`${tag}`}</Tag>
-            ))}
-          </Stack>
-        )}
-
-        <Stack mt={8} direction={"row"} spacing={4}>
-          <Tooltip label={email}>
-            <Button
-              flex={1}
-              fontSize={"sm"}
-              rounded={"full"}
-              as={Link}
-              href={`mailto:${email}`}
-              variant={lightVariant}
+    return (
+        <Box
+            as={Stack}
+            bg={useColorModeValue("gray.100", "gray.900")}
+            boxShadow={"lg"}
+            rounded={"lg"}
+            p={6}
+            textAlign={"center"}
+            divider={<StackDivider display={["none", "block"]} p={2}/>}
+            direction={["column", "row"]}
+            {...props}
+        >
+            <Center
+                w={{
+                    base: "full",
+                    md: 1 / 3
+                }}
+                p={2}
             >
-              Message
-            </Button>
-          </Tooltip>
+                <Box>
+                    <Tooltip label={`${fullName}'s Discord avatar`}>
+                        <Avatar
+                            size={{
+                                base: "xl",
+                                md: "2xl"
+                            }}
+                            name={fullName}
+                            src={avatarSrc}
+                            alt={fullName}
+                            mb={4}
+                            pos={"relative"}
+                        />
+                    </Tooltip>
+                    <Heading fontSize={"2xl"} fontFamily={"body"}>
+                        <Tooltip label={fullName}>{fullName}</Tooltip>
+                    </Heading>
+                    <Text fontWeight={600} color={"gray.500"}>
+                        <Tooltip label={`${fullName}'s Discord tag`}>{userName}</Tooltip>
+                    </Text>
+                </Box>
+            </Center>
+            <Center
+                w={{
+                    base: "full",
+                    md: 2 / 3
+                }}
+                p={2}
+            >
+                <VStack
+                    minW={"full"}
+                    align='stretch'
+                    spacing={4}
+                >
+                    {description ? <Description>{description}</Description> : null}
+                    {tags?.length ? (
+                        <Wrap align={"center"} justify={"center"} direction={"row"}>
+                            {tags.map((tag, index) => (
+                                <WrapItem key={index}>
+                                    <Tag
+                                        colorScheme="green"
+                                        variant={lightVariant}
+                                    >{`${tag}`}</Tag>
+                                </WrapItem>
 
-          <Button
-            flex={1}
-            fontSize={"sm"}
-            rounded={"full"}
-            bg={"blue.400"}
-            color={"white"}
-            boxShadow={
-              "0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)"
-            }
-            _hover={{
-              bg: "blue.500",
-            }}
-            _focus={{
-              bg: "blue.500",
-            }}
-            as="a"
-            href={`https://discord.io/owlvernyte`}
-            target="_blank"
-          >
-            Follow
-          </Button>
-        </Stack>
-      </Box>
-    </Center>
-  );
+                            ))}
+                        </Wrap>
+                    ) : null}
+                    <Stack direction={{base: "column", md: "row"}} spacing={4} justifyContent={"center"}>
+                        <Tooltip label={email}>
+                            <Button
+                                as={"a"}
+                                href={`mailto:${email || "fiezt@pm.me"}`}
+                                size={{base: "lg", md: "md"}}
+                                variant={lightVariant}
+                                flex={{md: 1}}
+                            >
+                                Contact
+                            </Button>
+                        </Tooltip>
+                        {action?.label && action?.href && (
+                            <Button
+                                as={"a"}
+                                size={{base: "lg", md: "md"}}
+                                href={action?.href}
+                                target="_blank"
+                                colorScheme={"cyan"}
+                                flex={{md: 1}}
+                                leftIcon={action?.icon}
+                            >
+                                {action.label}
+                            </Button>
+                        )}
+                    </Stack>
+                </VStack>
+
+            </Center>
+        </Box>
+    );
 }
 
 export default UserCard;
