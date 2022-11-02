@@ -7,7 +7,7 @@ export const team = [
         quote: "I am not nerd",
         rank: "Founder & Developer",
         email: "fiezt@pm.me",
-        tags: ["Founder", "Fullstack Developer"],
+        tags: ["Fullstack Developer"],
         action: {
             label: "Follow",
             icon: <FaGithub/>,
@@ -20,7 +20,7 @@ export const team = [
         quote: "I sit for at least 23 hours a day...",
         rank: "Co-Founder & Developer",
         email: "huynhnhattruonglt@gmail.com",
-        tags: ["Co-Founder", "Developer", "Manager"],
+        tags: ["Developer", "Manager"],
         action: {
             label: "Follow",
             icon: <FaGithub/>,
@@ -33,7 +33,7 @@ export const team = [
         quote: "I sit for at least 22 hours a day...",
         rank: "Developer",
         email: "tyuipham@gmail.com",
-        tags: ["Data Analyst", "System Designer"],
+        tags: ["Data Analyst", "System Designer", "Database Designer"],
         action: {
             label: "Follow",
             icon: <FaGithub/>,
