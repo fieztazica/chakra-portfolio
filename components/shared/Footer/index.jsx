@@ -7,7 +7,6 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import React from "react";
-import NextLink from "next/link";
 import { socials, techs } from "../../../data/constants";
 import TechButton from "./TechButton";
 import SocialButton from "./SocialButton";
@@ -19,7 +18,7 @@ export default function Footer() {
         as={Stack}
         maxW={"full"}
         py={4}
-        direction={{ base: "column", md: "row" }}
+        direction={{ base: "column-reverse", md: "row" }}
         spacing={4}
         justify={{ base: "center", md: "space-between" }}
         align={{ base: "center", md: "center" }}
@@ -34,7 +33,6 @@ export default function Footer() {
         <Stack
           direction={"row"}
           spacing={2}
-          display={{ base: "none", md: "inherit" }}
           align="center"
           color={"gray.500"}
         >
