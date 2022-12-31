@@ -29,7 +29,7 @@ export const data = {
   },
   html_url: "https://github.com/fiezt1492/pairLegends",
   description:
-    "A Pikachu alikes game exercise while learning MVC with ASP.NET Core API, ReactJS, MUI, SQL Database",
+    "A Pikachu alike game exercise while learning MVC with ASP.NET Core API, ReactJS, MUI, SQL Database",
   fork: false,
   url: "https://api.github.com/repos/fiezt1492/pairLegends",
   forks_url: "https://api.github.com/repos/fiezt1492/pairLegends/forks",

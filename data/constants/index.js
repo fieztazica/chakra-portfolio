@@ -36,3 +36,5 @@ export const techs = [
     icon: <SiChakraui />,
   },
 ];
+
+export const sourceUrl = "https://github.com/fiezt1492/chakra-portfolio";

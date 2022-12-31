@@ -11,10 +11,10 @@ import {
 import React from "react";
 import {data} from "../../data/github/fake";
 import {getOwnerRepos} from "../../lib/github";
-import ScrollBox from "../shared/ScrollBox";
-import SectionHeading from "../shared/SectionHeading";
-import RepoCard from "./RepoCard";
-import ReposSkeleton from "./ReposSkeleton";
+import ScrollBox from "../../components/shared/ScrollBox";
+import SectionHeading from "../../components/shared/SectionHeading";
+import RepoCard from "../../components/projects/RepoCard";
+import ReposSkeleton from "../../components/projects/ReposSkeleton";
 
 function GitHubRepo() {
     const [loading, setLoading] = React.useState(false);

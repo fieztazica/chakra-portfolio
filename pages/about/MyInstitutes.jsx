@@ -4,6 +4,7 @@ import {
   Flex,
   Grid,
   Heading,
+  Link,
   HStack,
   Image,
   Modal,
@@ -17,11 +18,11 @@ import {
   Tag,
   Text,
   useDisclosure,
+  ButtonGroup,
 } from "@chakra-ui/react";
 import React from "react";
 import { institutes } from "../../data";
-import SectionHeading from "../shared/SectionHeading";
-import InfoCard from "./InfoCard";
+import InfoCard from "../../components/about/InfoCard";
 
 function MyInstitutes() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -34,12 +35,7 @@ function MyInstitutes() {
 
   return (
     <>
-      <SectionHeading mb={4}>
-        <Text as="b" fontSize={"xl"}>
-          My Institutes
-        </Text>
-      </SectionHeading>
-      <Box mt={2} rounded="md">
+      <Box rounded="md">
         {institutes.map((i, index) => {
           return (
             <InfoCard
@@ -66,7 +62,7 @@ function MyInstitutes() {
                 <Text fontSize={"xl"}>{card?.title}</Text>
                 <Text fontSize={"xs"}>{card?.period}</Text>
                 <HStack spacing={1} mt={1}>
-                  {card?.skills.map((skill, i) => (
+                  {card?.skills?.map((skill, i) => (
                     <Tag key={i} size={"sm"} colorScheme={"cyan"}>
                       {skill}
                     </Tag>
@@ -87,7 +83,18 @@ function MyInstitutes() {
             <Text>{`${card?.role}`}</Text>
           </ModalBody>
           <ModalFooter>
-            <Button onClick={onClose}>Close</Button>
+            <ButtonGroup>
+              <Button
+                as={Link}
+                href={card?.url}
+                isExternal
+                colorScheme={"cyan"}
+                variant={"ghost"}
+              >
+                Visit
+              </Button>
+              <Button onClick={onClose}>Close</Button>
+            </ButtonGroup>
           </ModalFooter>
         </ModalContent>
       </Modal>

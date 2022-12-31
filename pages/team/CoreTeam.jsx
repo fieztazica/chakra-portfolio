@@ -10,13 +10,13 @@ import {
 import React from "react";
 import {Autoplay, Mousewheel, Pagination} from "swiper";
 import {Swiper, SwiperSlide} from "swiper/react";
-import UserCard from "./UserCard";
+import UserCard from "../../components/team/UserCard";
 
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
-import SectionHeading from "../shared/SectionHeading";
-import ScrollBox from "../shared/ScrollBox";
+import SectionHeading from "../../components/shared/SectionHeading";
+import ScrollBox from "../../components/shared/ScrollBox";
 import {team as DataTeam} from "../../data/team/index"
 
 function CoreTeam() {

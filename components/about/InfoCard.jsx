@@ -14,6 +14,7 @@ function InfoCard(props) {
         <Flex
             w="full"
             mx="auto"
+            h="full"
             bg={useColorModeValue("gray.100", "gray.900")}
             shadow="lg"
             rounded="lg"
@@ -67,7 +68,7 @@ function InfoCard(props) {
                     {props.role}
                 </Text>
                 <Wrap mt={3}>
-                    {props.skills.map((skill, i) => (
+                    {props?.skills?.map((skill, i) => (
                         <WrapItem key={i}>
                             <Tag
                                 size={"sm"}
