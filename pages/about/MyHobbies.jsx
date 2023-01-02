@@ -1,26 +1,48 @@
 import {
-  List,
-  ListItem,
-  ListIcon,
-  OrderedList,
-  UnorderedList,
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  AccordionPanel,
+  AccordionIcon,
+  Box,
+  Text,
+  Tag,
+  Wrap,
+  WrapItem,
 } from "@chakra-ui/react";
-import { AiOutlineRight } from "react-icons/ai";
 import React from "react";
 import { hobbies } from "../../data";
 
 function MyHobbies() {
   return (
-    <List spacing={2}>
+    <Accordion allowToggle>
       {hobbies.map((hobby, index) => {
         return (
-          <ListItem key={index}>
-            <ListIcon as={AiOutlineRight} color="green.500" />
-            {hobby}
-          </ListItem>
+          <AccordionItem key={index}>
+            <AccordionButton>
+              <AccordionIcon />
+              <Box as="span" flex="1" textAlign="left" ml={2}>
+                <Text as="samp" fontSize={"lg"}>
+                  {hobby?.title}
+                </Text>
+              </Box>
+            </AccordionButton>
+            <AccordionPanel pb={4}>
+              {hobby?.panel}
+              <Wrap mt={4}>
+                {hobby?.tags?.map((tag, index) => (
+                  <WrapItem key={index}>
+                    <Tag variant="solid" colorScheme="cyan">
+                      {tag}
+                    </Tag>
+                  </WrapItem>
+                ))}
+              </Wrap>
+            </AccordionPanel>
+          </AccordionItem>
         );
       })}
-    </List>
+    </Accordion>
   );
 }
 

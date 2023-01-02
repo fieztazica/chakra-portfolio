@@ -4,6 +4,7 @@ import MyInstitutes from "./MyInstitutes";
 import MyHobbies from "./MyHobbies";
 import Section from "../../components/shared/Section";
 import Bio from "./Bio";
+import Milestones from "./Milestones";
 
 function About() {
   return (
@@ -12,10 +13,13 @@ function About() {
         <Section title={"Bio"}>
           <Bio />
         </Section>
-        <Section title={"My Institutes"}>
+        <Section title={"Milestones"}>
+          <Milestones />
+        </Section>
+        <Section title={"Institutes"}>
           <MyInstitutes />
         </Section>
-        <Section title={"My Hobbies"}>
+        <Section title={"Hobbies"}>
           <MyHobbies />
         </Section>
       </Container>
