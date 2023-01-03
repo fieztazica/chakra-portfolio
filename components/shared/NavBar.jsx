@@ -23,7 +23,7 @@ import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import ColorModeButton from "./ColorModeButton";
 import NextLink from "next/link";
 import { BsPersonFill } from "react-icons/bs";
-import { MdGroups, MdWork } from "react-icons/md";
+import { MdGroups, MdWork, MdChat } from "react-icons/md";
 import { ReactComponent as fieztLogo } from "../../public/fiezt.svg";
 import Logo from "./Logo";
 import { useRouter } from "next/router";
@@ -43,6 +43,11 @@ const Links = [
     label: "Team",
     href: "/team",
     icon: <MdGroups />,
+  },
+  {
+    label: "Connect",
+    href: "/connect",
+    icon: <MdChat />,
   },
 ];
 

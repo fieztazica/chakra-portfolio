@@ -4,6 +4,7 @@ import {
   Link,
   Stack,
   Text,
+  Icon,
   useColorModeValue,
 } from "@chakra-ui/react";
 import React from "react";
@@ -30,26 +31,21 @@ export default function Footer() {
           </Link>
           . All rights reserved
         </Text>
-        <Stack
-          direction={"row"}
-          spacing={2}
-          align="center"
-          color={"gray.500"}
-        >
+        <Stack direction={"row"} spacing={2} align="center" color={"gray.500"}>
           <Text fontSize={"sm"}>Made with</Text>
           {techs.map((tech, i) => {
             return (
               <TechButton key={i} label={tech.label} href={tech.href}>
-                {tech.icon}
+                <Icon as={tech.icon} />
               </TechButton>
             );
           })}
         </Stack>
         <Stack direction={"row"} spacing={6}>
-          {socials.map((social, i) => {
+          {socials.slice(0,3).map((social, i) => {
             return (
               <SocialButton key={i} label={social.label} href={social.href}>
-                {social.icon}
+                <Icon as={social.icon} />
               </SocialButton>
             );
           })}

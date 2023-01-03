@@ -5,6 +5,11 @@ const Meta = ({ title, keywords, description, image, isAlone = false }) => {
   return (
     <Head>
       <link rel="icon" href="/favicon.ico" />
+      {/* <link
+        rel="stylesheet"
+        href="https://s.pageclip.co/v1/pageclip.css"
+        media="screen"
+      /> */}
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta charSet="utf-8" />
       <meta name="keywords" content={keywords} />
