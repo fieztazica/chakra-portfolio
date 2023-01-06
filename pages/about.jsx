@@ -1,8 +1,8 @@
 import { Box, Container, Text } from "@chakra-ui/react";
-import PageLayout from "../../components/layouts/PageLayout";
+import PageLayout from "../components/layouts/PageLayout";
 import MyInstitutes from "./MyInstitutes";
 import MyHobbies from "./MyHobbies";
-import Section from "../../components/shared/Section";
+import Section from "../components/shared/Section";
 import Bio from "./Bio";
 import Milestones from "./Milestones";
 

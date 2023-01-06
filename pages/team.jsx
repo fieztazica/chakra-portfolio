@@ -1,6 +1,6 @@
 import { Box, Center, Container, Heading, Text } from "@chakra-ui/react";
-import PageLayout from "../../components/layouts/PageLayout";
-import SectionHeading from "../../components/shared/SectionHeading";
+import PageLayout from "../components/layouts/PageLayout";
+import SectionHeading from "../components/shared/SectionHeading";
 import CoreTeam from "./CoreTeam";
 
 function Team() {

@@ -12,10 +12,10 @@ import {
   Tag,
   Text,
 } from "@chakra-ui/react";
-import PageLayout from "../../components/layouts/PageLayout";
-import SectionHeading from "../../components/shared/SectionHeading";
+import PageLayout from "../components/layouts/PageLayout";
+import SectionHeading from "../components/shared/SectionHeading";
 import ContactForm from "./ContactForm";
-import DividerWith from "../../components/shared/DividerWith";
+import DividerWith from "../components/shared/DividerWith";
 import Emails from "./Emails";
 import Socials from "./Socials";
 

@@ -2,18 +2,14 @@ import {
   Button,
   ButtonGroup,
   Center,
-  Fade,
   Flex,
   HStack,
-  Spinner,
   Text,
 } from "@chakra-ui/react";
 import React from "react";
-import ScrollBox from "../../components/shared/ScrollBox";
-import SectionHeading from "../../components/shared/SectionHeading";
-import RepoCard from "../../components/projects/RepoCard";
-import ReposSkeleton from "../../components/projects/ReposSkeleton";
-import { useRouter } from "next/router";
+import ScrollBox from "../shared/ScrollBox";
+import SectionHeading from "../shared/SectionHeading";
+import RepoCard from "./RepoCard";
 
 function GitHubRepo({ repos }) {
   const [page, setPage] = React.useState(1);

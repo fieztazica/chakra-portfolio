@@ -22,7 +22,7 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { institutes } from "../../data";
-import InfoCard from "../../components/about/InfoCard";
+import InfoCard from "./InfoCard";
 
 function MyInstitutes() {
   const { isOpen, onOpen, onClose } = useDisclosure();
