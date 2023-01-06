@@ -13,10 +13,12 @@ function Projects({ repos }) {
 }
 
 export async function getServerSideProps() {
-  const res = await fetch(`https://api.github.com/users/fiezt1492/repos?per_page=100`);
+  const res = await fetch(
+    `https://api.github.com/users/fiezt1492/repos?per_page=100`
+  );
   const repos = await res.json();
 
-  if (!repos) {
+  if (!repos || Array.isArray(repos)) {
     return {
       notFound: true,
     };
