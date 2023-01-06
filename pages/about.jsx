@@ -1,10 +1,10 @@
 import { Box, Container, Text } from "@chakra-ui/react";
 import PageLayout from "../components/layouts/PageLayout";
-import MyInstitutes from "./MyInstitutes";
-import MyHobbies from "./MyHobbies";
 import Section from "../components/shared/Section";
-import Bio from "./Bio";
-import Milestones from "./Milestones";
+import Bio from "../components/about/Bio";
+import Milestones from "../components/about/Milestones";
+import MyInstitutes from "../components/about/MyInstitutes";
+import MyHobbies from "../components/about/MyHobbies";
 
 function About() {
   return (

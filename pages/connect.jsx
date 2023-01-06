@@ -14,10 +14,9 @@ import {
 } from "@chakra-ui/react";
 import PageLayout from "../components/layouts/PageLayout";
 import SectionHeading from "../components/shared/SectionHeading";
-import ContactForm from "./ContactForm";
-import DividerWith from "../components/shared/DividerWith";
-import Emails from "./Emails";
-import Socials from "./Socials";
+import Emails from "../components/connect/Emails";
+import ContactForm from "../components/connect/ContactForm";
+import Socials from "../components/connect/Socials";
 
 function Connect() {
   return (

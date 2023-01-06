@@ -28,7 +28,6 @@ function GitHubRepo({ repos }) {
               GitHub Repositories
             </Text>
           </HStack>
-          <ButtonGroup></ButtonGroup>
         </Flex>
       </SectionHeading>
       <ScrollBox mt={2} maxH={"md"} pr={4} rounded="md">
