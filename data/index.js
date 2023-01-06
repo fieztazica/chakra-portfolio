@@ -33,7 +33,7 @@ export const hobbies = [
   },
   {
     title: "Music",
-    panel: `Soul of life, music. I have a variety in music genres, even "Quan họ" (a traditional genre of music in Vietnam). I usually listening to my fav playlist on Spotify while coding, taking a bath or just boring.`,
+    panel: `Soul of life, music. I have a variety in music genres, even "Quan họ" (a traditional genre of music in Vietnam). I often listen to my fav playlist on Spotify while coding, taking a bath or just boring.`,
     tags: [
       "JustaTee",
       "BLACKPINK",
