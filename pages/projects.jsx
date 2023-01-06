@@ -18,7 +18,7 @@ export async function getServerSideProps() {
   );
   const repos = await res.json();
 
-  if (!repos || Array.isArray(repos)) {
+  if (!repos) {
     return {
       notFound: true,
     };
