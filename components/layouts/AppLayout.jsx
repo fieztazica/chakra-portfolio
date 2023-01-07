@@ -5,23 +5,23 @@ import { useEffect } from "react";
 import { Router } from "next/router";
 
 function AppLayout(props) {
-  const { isOpen, onClose, onOpen } = useDisclosure();
+  // const { isOpen, onClose, onOpen } = useDisclosure();
 
-  useEffect(() => {
-    Router.events.on("routeChangeStart", onOpen);
-    Router.events.on("routeChangeComplete", onClose);
-    Router.events.on("routeChangeError", onClose);
+  // useEffect(() => {
+  //   Router.events.on("routeChangeStart", onOpen);
+  //   Router.events.on("routeChangeComplete", onClose);
+  //   Router.events.on("routeChangeError", onClose);
 
-    return () => {
-      Router.events.off("routeChangeStart", onOpen);
-      Router.events.off("routeChangeComplete", onClose);
-      Router.events.off("routeChangeError", onClose);
-    };
-  }, []);
+  //   return () => {
+  //     Router.events.off("routeChangeStart", onOpen);
+  //     Router.events.off("routeChangeComplete", onClose);
+  //     Router.events.off("routeChangeError", onClose);
+  //   };
+  // }, []);
 
   return (
     <>
-      {isOpen && <Progress colorScheme="cyan" size="xs" isIndeterminate />}
+      {/* {isOpen && <Progress colorScheme="cyan" size="xs" isIndeterminate />} */}
       <Box display={"flex"} flexDirection={"column"} minHeight={"100vh"}>
         <NavBar />
         <Box w={["90%", "85%", "80%"]} maxW={800} mx="auto" flex={1}>
