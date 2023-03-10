@@ -4,7 +4,8 @@ const Meta = ({ title, keywords, description, image, isAlone = false }) => {
   const displayTitle = isAlone ? title : title.concat(" | Fiezt");
   return (
     <Head>
-      <link rel="icon" href="/favicon.ico" />
+      <link rel="icon" href="/fiezt-dark.ico" media="(prefers-color-scheme: light)"/>
+      <link rel='icon' href="/fiezt-light.ico" media="(prefers-color-scheme: dark)"/>
       {/* <link
         rel="stylesheet"
         href="https://s.pageclip.co/v1/pageclip.css"
