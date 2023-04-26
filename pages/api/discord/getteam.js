@@ -1,10 +1,10 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
 import { team } from '../../../data/team'
-import { getGuildMember } from '../../../lib/discord'
+import { getGuildMembers } from '../../../lib/discord'
 
 export default async function handler(req, res) {
-    const data = await getGuildMember()
+    const data = await getGuildMembers()
     // console.log(data);
     const members = data
         .filter((member) => {
