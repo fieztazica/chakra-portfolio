@@ -1,36 +1,37 @@
 {
-  "name": "chakra-portfolio",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "@chakra-ui/icons": "^2.0.15",
-    "@chakra-ui/react": "^2.4.6",
-    "@emotion/react": "^11",
-    "@emotion/styled": "^11",
-    "framer-motion": "^6",
-    "isomorphic-unfetch": "^4.0.1",
-    "markdown-to-jsx": "^7.1.8",
-    "moment": "^2.29.4",
-    "next": "13.1.1",
-    "numeral": "^2.0.6",
-    "react": "18.2.0",
-    "react-copy-to-clipboard": "^5.1.0",
-    "react-dom": "18.2.0",
-    "react-hook-form": "^7.41.3",
-    "react-icons": "^4.7.1",
-    "react-typist-component": "^1.0.5",
-    "swiper": "^8.4.5",
-    "swr": "^2.0.0",
-    "typed.js": "^2.0.12"
-  },
-  "devDependencies": {
-    "eslint": "8.30.0",
-    "eslint-config-next": "13.1.1"
-  }
+    "name": "chakra-portfolio",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint"
+    },
+    "dependencies": {
+        "@chakra-ui/icons": "^2.0.15",
+        "@chakra-ui/react": "^2.4.6",
+        "@emotion/react": "^11",
+        "@emotion/styled": "^11",
+        "framer-motion": "^6",
+        "isomorphic-unfetch": "^4.0.1",
+        "markdown-to-jsx": "^7.1.8",
+        "moment": "^2.29.4",
+        "next": "13.1.1",
+        "numeral": "^2.0.6",
+        "react": "18.2.0",
+        "react-copy-to-clipboard": "^5.1.0",
+        "react-dom": "18.2.0",
+        "react-hook-form": "^7.41.3",
+        "react-icons": "^4.7.1",
+        "react-typist-component": "^1.0.5",
+        "swiper": "^8.4.5",
+        "swr": "^2.0.0",
+        "typed.js": "^2.0.12"
+    },
+    "devDependencies": {
+        "eslint": "8.30.0",
+        "eslint-config-next": "13.1.1",
+        "prettier": "2.8.8"
+    }
 }

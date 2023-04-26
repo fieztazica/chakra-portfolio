@@ -6,22 +6,22 @@ import {
     useColorModeValue,
     Wrap,
     WrapItem,
-} from "@chakra-ui/react";
+} from '@chakra-ui/react'
 
 function InfoCard(props) {
-    const lightVariant = useColorModeValue("outline");
+    const lightVariant = useColorModeValue('outline')
     return (
         <Flex
             w="full"
             mx="auto"
             h="full"
-            bg={useColorModeValue("gray.100", "gray.900")}
+            bg={useColorModeValue('gray.100', 'gray.900')}
             shadow="lg"
             rounded="lg"
             overflow="hidden"
             transition="transform .2s"
             _hover={{
-                transform: "scale(1.05)",
+                transform: 'scale(1.05)',
             }}
             {...props}
         >
@@ -30,11 +30,11 @@ function InfoCard(props) {
                 bgSize="cover"
                 style={{
                     backgroundImage: `url(${props.logo})`,
-                    backgroundPosition: "center",
+                    backgroundPosition: 'center',
                 }}
             ></Box>
             <Box
-                w={"full"}
+                w={'full'}
                 p={{
                     base: 4,
                     md: 4,
@@ -46,13 +46,13 @@ function InfoCard(props) {
                         fontWeight="bold"
                         color="gray.800"
                         _dark={{
-                            color: "white",
+                            color: 'white',
                         }}
                         noOfLines={[1, 2, 3]}
                     >
                         {props.title}
                     </Text>
-                    <Text minW={"max-content"} color="gray.500" fontSize={"xs"}>
+                    <Text minW={'max-content'} color="gray.500" fontSize={'xs'}>
                         {props.period}
                     </Text>
                 </Flex>
@@ -61,7 +61,7 @@ function InfoCard(props) {
                     fontSize="sm"
                     color="gray.600"
                     _dark={{
-                        color: "gray.400",
+                        color: 'gray.400',
                     }}
                     noOfLines={[1, 2, 3]}
                 >
@@ -71,9 +71,9 @@ function InfoCard(props) {
                     {props?.skills?.map((skill, i) => (
                         <WrapItem key={i}>
                             <Tag
-                                size={"sm"}
-                                colorScheme={"cyan"}
-                                maxW={"max-content"}
+                                size={'sm'}
+                                colorScheme={'cyan'}
+                                maxW={'max-content'}
                                 variant={lightVariant}
                             >
                                 <Text noOfLines={1}>{skill}</Text>
@@ -83,7 +83,7 @@ function InfoCard(props) {
                 </Wrap>
             </Box>
         </Flex>
-    );
+    )
 }
 
-export default InfoCard;
+export default InfoCard

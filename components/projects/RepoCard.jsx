@@ -11,36 +11,36 @@ import {
     useColorModeValue,
     Wrap,
     WrapItem,
-} from "@chakra-ui/react";
-import moment from "moment/moment";
-import numeral from "numeral";
-import {TbStar, TbGitFork, TbFile, TbLicense} from "react-icons/tb";
+} from '@chakra-ui/react'
+import moment from 'moment/moment'
+import numeral from 'numeral'
+import { TbStar, TbGitFork, TbFile, TbLicense } from 'react-icons/tb'
 
-function RepoCard({data, ...props}) {
+function RepoCard({ data, ...props }) {
     function stringToHex(string) {
         return string
-            .split("")
-            .map((c) => c.charCodeAt(0).toString(16).padStart(2, "0"))
-            .join("");
+            .split('')
+            .map((c) => c.charCodeAt(0).toString(16).padStart(2, '0'))
+            .join('')
     }
 
     return (
         <Flex
             w="full"
             mx="auto"
-            bg={useColorModeValue("gray.100", "gray.900")}
+            bg={useColorModeValue('gray.100', 'gray.900')}
             shadow="lg"
             rounded="lg"
             overflow="hidden"
             // transition="transform .2s"
-            transitionDuration={".2s"}
+            transitionDuration={'.2s'}
             _hover={{
-                transform: "translateX(5px)",
+                transform: 'translateX(5px)',
             }}
             {...props}
         >
             <Box
-                w={"full"}
+                w={'full'}
                 p={{
                     base: 4,
                     md: 4,
@@ -50,8 +50,8 @@ function RepoCard({data, ...props}) {
                     <Stack
                         spacing={2}
                         mr={2}
-                        direction={["column", "row"]}
-                        alignItems={["left", "center"]}
+                        direction={['column', 'row']}
+                        alignItems={['left', 'center']}
                     >
                         <Text
                             as={Link}
@@ -60,7 +60,7 @@ function RepoCard({data, ...props}) {
                             fontWeight="bold"
                             color="gray.800"
                             _dark={{
-                                color: "white",
+                                color: 'white',
                             }}
                             noOfLines={[1, 2, 3]}
                             target="_blank"
@@ -68,38 +68,40 @@ function RepoCard({data, ...props}) {
                             {data.name}
                         </Text>
                         <Tag
-                            size={"sm"}
-                            w={"max-content"}
-                            h={"10px"}
-                            variant={useColorModeValue("outline")}
+                            size={'sm'}
+                            w={'max-content'}
+                            h={'10px'}
+                            variant={useColorModeValue('outline')}
                         >
                             {`${data.visibility}`.toUpperCase()}
                         </Tag>
                     </Stack>
                     <Stack
                         ml={2}
-                        minW={"max-content"}
-                        divider={<StackDivider display={["none", "block"]}/>}
-                        fontSize={"xs"}
+                        minW={'max-content'}
+                        divider={<StackDivider display={['none', 'block']} />}
+                        fontSize={'xs'}
                         color="gray.500"
-                        direction={["column", "row"]}
+                        direction={['column', 'row']}
                     >
                         {data.stargazers_count && (
                             <HStack>
-                                <TbStar/>
+                                <TbStar />
                                 <Text>{`${data.stargazers_count}`}</Text>
                             </HStack>
                         )}
                         {data.forks_count && (
                             <HStack>
-                                <TbGitFork/>
+                                <TbGitFork />
                                 <Text>{`${data.forks_count}`}</Text>
                             </HStack>
                         )}
                         {data.size && (
                             <HStack>
-                                <TbFile/>
-                                <Text>{`${numeral(data.size * 1024).format("0.0b")}`}</Text>
+                                <TbFile />
+                                <Text>{`${numeral(data.size * 1024).format(
+                                    '0.0b'
+                                )}`}</Text>
                             </HStack>
                         )}
                     </Stack>
@@ -110,7 +112,7 @@ function RepoCard({data, ...props}) {
                         fontSize="sm"
                         color="gray.600"
                         _dark={{
-                            color: "gray.400",
+                            color: 'gray.400',
                         }}
                         noOfLines={[1, 2, 3]}
                     >
@@ -121,7 +123,7 @@ function RepoCard({data, ...props}) {
                     <Wrap mt={3}>
                         {data.topics.map((topic, i) => (
                             <WrapItem key={i}>
-                                <Tag size={"sm"} colorScheme={"cyan"}>
+                                <Tag size={'sm'} colorScheme={'cyan'}>
                                     <Text noOfLines={1}>{topic}</Text>
                                 </Tag>
                             </WrapItem>
@@ -129,38 +131,42 @@ function RepoCard({data, ...props}) {
                     </Wrap>
                 )}
                 <HStack
-                    divider={<StackDivider/>}
+                    divider={<StackDivider />}
                     spacing={2}
-                    alignItems={"center"}
+                    alignItems={'center'}
                     mt={2}
-                    color={"gray.500"}
+                    color={'gray.500'}
                 >
                     {data.language && (
                         <HStack>
                             <Circle
-                                size={["10px", "16px"]}
-                                bg={`#${stringToHex(`${data.language}`).substring(0, 6)}`}
+                                size={['10px', '16px']}
+                                bg={`#${stringToHex(
+                                    `${data.language}`
+                                ).substring(0, 6)}`}
                             />
                             <Text
                                 noOfLines={1}
-                                maxW={["12", "full"]}
+                                maxW={['12', 'full']}
                             >{`${data.language}`}</Text>
                         </HStack>
                     )}
                     {data.license && (
                         <HStack>
-                            <TbLicense w={["10px", "16px"]}/>
+                            <TbLicense w={['10px', '16px']} />
                             <Text
                                 noOfLines={1}
-                                maxW={["12", "full"]}
+                                maxW={['12', 'full']}
                             >{`${data.license.name}`}</Text>
                         </HStack>
                     )}
-                    <Text noOfLines={1}>{`${moment(data.updated_at).fromNow()}`}</Text>
+                    <Text noOfLines={1}>{`${moment(
+                        data.updated_at
+                    ).fromNow()}`}</Text>
                 </HStack>
             </Box>
         </Flex>
-    );
+    )
 }
 
-export default RepoCard;
+export default RepoCard
